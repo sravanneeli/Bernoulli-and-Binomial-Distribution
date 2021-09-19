@@ -1,0 +1,1 @@
+web: sh setup.sh && streamlit run Bernoulli_and_Binomial.py

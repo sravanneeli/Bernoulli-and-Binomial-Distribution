@@ -13,18 +13,17 @@ st.write("""
 # [Bernouli Distribution](https://en.wikipedia.org/wiki/Bernoulli_distribution)
 """)
 
+st.sidebar.header("INPUT PARAMETERS")
 # Select Success Probability with stream lit slider
-prob_success = st.slider(label='Select Probability of Success(P)', min_value=0.0, max_value=1.0, step=0.1)
+prob_success = st.sidebar.slider(label='Select Probability of Success(P)', min_value=0.0, max_value=1.0, step=0.1)
 
-st.write("""
-#### Probabilty of Success  - {0}       
-#### Probability of Failure - {1} 
+col1, col2 = st.columns(2)
 
-#
-""".format(prob_success, round(1-prob_success, 1)))
+col1.metric("Success Probability", prob_success)
+col2.metric("Failure Probability", round(1-prob_success, 1))
 
 # Number of samples to be drawn from bernouli distrubtion
-num_samples = st.slider(label="Number of Samples", min_value=10, max_value=10000, step=10)
+num_samples = st.sidebar.slider(label="Number of Samples", min_value=10, max_value=10000, step=10)
 
 # Bernouli Distribution
 R = bernoulli.rvs(prob_success, 1-prob_success, size = num_samples)
@@ -45,11 +44,10 @@ st.plotly_chart(fig)
 
 st.write("""
 # [Binomial Distribution](https://en.wikipedia.org/wiki/Binomial_distribution)
-#
 """)
 
 # Number of Individual Bernouli Trails
-num_trails = st.slider(label="Number of Independent Bernouli Trails", min_value=2, max_value=100, step=1)
+num_trails = st.sidebar.slider(label="Number of Independent Bernouli Trails", min_value=2, max_value=100, step=1)
 
 pdf_binomial = []
 
@@ -64,11 +62,11 @@ for prob in pdf_binomial:
     temp += prob
     cumulative_sum.append(temp)
 
-print(cumulative_sum)
+# print(cumulative_sum)
 # Dataframe for the Distribution
 pdf_binomial = pd.DataFrame(pdf_binomial, columns=['Distribution'])
 
-print(pdf_binomial)
+# print(pdf_binomial)
 
 # Plot both Probability Density Function and Cummilative Function
 fig = make_subplots(rows=1, cols=2, subplot_titles=("Probability Density Function", "Cummilative Density Function"))
@@ -80,5 +78,4 @@ fig.add_trace(go.Scatter(x=list(range(0, num_trails+1)), y=cumulative_sum,
                     mode='lines+markers', marker_color='blue', marker_line_color='midnightblue'), row=1, col=2)
 
 
-
-st.plotly_chart(fig)
+st.write(fig)
