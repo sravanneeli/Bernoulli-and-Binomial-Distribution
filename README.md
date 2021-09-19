@@ -5,3 +5,4 @@ Basic visualization with streamlit
 * Install the required python libraries using requirements.txt
 * To create separate conda environment use requirements.yaml file
 * To start the web app `streamlit run Bernoulli_and_Binomial.py`
+* The app is deployed in heroku please visit and checkout
