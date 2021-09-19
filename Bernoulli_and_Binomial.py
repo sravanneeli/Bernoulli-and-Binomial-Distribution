@@ -10,7 +10,7 @@ from plotly.subplots import make_subplots
 
 
 st.write("""
-# [Bernouli Distribution](https://en.wikipedia.org/wiki/Bernoulli_distribution)
+# [Bernoulli Distribution](https://en.wikipedia.org/wiki/Bernoulli_distribution)
 """)
 
 st.sidebar.header("INPUT PARAMETERS")
@@ -47,7 +47,7 @@ st.write("""
 """)
 
 # Number of Individual Bernouli Trails
-num_trails = st.sidebar.slider(label="Number of Independent Bernouli Trails", min_value=2, max_value=100, step=1)
+num_trails = st.sidebar.slider(label="Number of Independent Bernoulli Trails", min_value=2, max_value=100, step=1)
 
 pdf_binomial = []
 
